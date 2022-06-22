@@ -10,7 +10,7 @@
 
     <h1>Applicant Form</h1>
 
-    <form action="test.php" method="POST">
+    <form action="create-lead.php" method="POST">
       <label for="firstName">First Name</label>
       <input type="text" name="firstName" id="firstName">
       <label for="lastName">Last Name</label>
@@ -19,13 +19,12 @@
       <input type="text" name="email" id="email">
       <label for="telephone">Telephone</label>
       <input type="text" name="telephone" id="telephone">
-      <label for="applicType">Application Type</label>
-      <select class="secondary" name="applicType" id="applicType">
-        <option value="1">option1</option>
-        <option value="2">option2</option>
-        <option value="3">option3</option>
-        <option value="4">option4</option>
-        <option value="5">option5</option>
+      <label for="buyerType">Application Type</label>
+      <select class="secondary" name="buyerType" id="buyerType">
+        <option value="Purchase">Purchase</option>
+        <option value="FirstTimeBuyer">First Time Buyer</option>
+        <option value="Remortgage">Remortgage</option>
+        <option value="RaiseFunds">Raise Funds</option>
       </select>
       <label for="terms">
         <input type="checkbox" name="terms" value="">

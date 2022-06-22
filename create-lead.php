@@ -1,15 +1,13 @@
 <?php
-
-
-
 $data= array(
+    "buyerType" => $_POST["buyerType"],
+        [applicants]
+          []="firstName" => $_POST["firstName"],
+          []="lastName" => $_POST["lastName"],
+          []="email" => $_POST["email"],
+          []="telephone" => $_POST["telephone"],
 
-      "firstName" => $_POST["firstName"],
-      "lastName" => $_POST["lastName"],
-      "email" => $_POST["email"],
-      "telephone" => $_POST["telephone"],
 );
-
 var_dump(json_encode($data));
 
 $ch = curl_init();
