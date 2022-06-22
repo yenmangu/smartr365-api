@@ -1,5 +1,4 @@
-
-
+<?php
 // function test_input($data) {
 //   $data = trim ($data);
 //   $data = stripslashes($data);
@@ -98,20 +97,7 @@ curl -X 'POST' \
 // var_dump($applicants);
 //
 // exit;
-/*
 
-$data= [
-
-    applicants => [
-
-      ["firstName"] => $_POST["firstName"],
-      ["lastName" =>] $_POST["lastName"],
-      ["email"] => $_POST["email"],
-      ["telephone"] => $_POST["telephone"],
-    ]
-];
-
-*/
 //
 // $data = array(
 //   "firstName" => $_POST("firstName"),
