@@ -19,8 +19,21 @@
       <input type="text" name="email" id="email">
       <label for="telephone">Telephone</label>
       <input type="text" name="telephone" id="telephone">
-      <input type="submit" name="submit" id="submit">
-      <input type="reset" name="reset" id="reset">
+      <label for="applicType">Application Type</label>
+      <select class="secondary" name="applicType" id="applicType">
+        <option value="1">option1</option>
+        <option value="2">option2</option>
+        <option value="3">option3</option>
+        <option value="4">option4</option>
+        <option value="5">option5</option>
+      </select>
+      <label for="terms">
+        <input type="checkbox" name="terms" value="">
+        I agree to the terms and conditions
+      </label>
+
+      <input class="outline " type="submit" name="submit" id="submit">
+      <input class="outline secondary" type="reset" name="reset" id="reset">
     </form>
     </main>
 </body>
