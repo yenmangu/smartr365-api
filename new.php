@@ -12,13 +12,13 @@
 
     <form action="create-lead.php" method="POST">
       <label for="firstName">First Name</label>
-      <input type="text" name="firstName" value="firstName" id="firstName">
+      <input type="text" name="firstName" id="firstName">
       <label for="lastName">Last Name</label>
-      <input type="text" name="lastName" value="lastName" id="lastName">
+      <input type="text" name="lastName" id="lastName">
       <label for="email">Email</label>
-      <input type="text" name="email" value="email" id="email">
+      <input type="text" name="email" id="email">
       <label for="telephone">Telephone</label>
-      <input type="text" name="telephone" value="telephone" id="telephone">
+      <input type="text" name="telephone" id="telephone">
       <input type="submit" name="submit" id="submit">
       <input type="reset" name="reset" id="reset">
     </form>

@@ -98,29 +98,24 @@ curl -X 'POST' \
 // var_dump($applicants);
 //
 // exit;
-/*
 
-$data= [
+// $data = array(
+//   "firstName" => $_POST("firstName"),
+//   "lastName" => $_POST("lastName"),
+//   "email" => $_POST("email"),
+//   "telephone" => $_POST("telephone")
+// );
+//
 
-    applicants => [
+$data= array(
 
-      ["firstName"] => $_POST["firstName"],
-      ["lastName" =>] $_POST["lastName"],
-      ["email"] => $_POST["email"],
-      ["telephone"] => $_POST["telephone"],
-    ]
-];
-
-*/
-
-$data = array(
-  "firstName" => $_POST("firstName"),
-  "lastName" => $_POST("lastName"),
-  "email" => $_POST("email"),
-  "telephone" => $_POST("telephone")
+      "firstName" => $_POST["firstName"],
+      "lastName" => $_POST["lastName"],
+      "email" => $_POST["email"],
+      "telephone" => $_POST["telephone"],
 );
 
-
+var_dump(json_encode($data));
 
 $ch = curl_init();
 
@@ -138,8 +133,6 @@ curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
 $response = curl_exec($ch);
-
-
 
 $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
