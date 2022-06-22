@@ -10,7 +10,7 @@
 
     <h1>Applicant Form</h1>
 
-    <form action="create-lead.php" method="POST">
+    <form action="new-create.php" method="POST">
       <label for="firstName">First Name</label>
       <input type="text" name="firstName" value="firstName" id="firstName">
       <label for="lastName">Last Name</label>
