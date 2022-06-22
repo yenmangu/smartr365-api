@@ -29,7 +29,7 @@
       </select>
       <label for="terms">
         <input type="checkbox" name="terms" value="">
-        I agree to the terms and conditions <a href="#">See terms here..</a>
+        I agree to the terms and conditions <a href="#">See terms</a>
       </label>
       <input class="outline " type="submit" name="submit" id="submit">
       <input class="outline secondary" type="reset" name="reset" id="reset">
