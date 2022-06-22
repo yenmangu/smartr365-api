@@ -9,7 +9,6 @@
   <main>
 
     <h1>Applicant Form</h1>
-
     <form action="create-lead.php" method="POST">
       <label for="firstName">First Name</label>
       <input type="text" name="firstName" id="firstName">
@@ -19,14 +18,13 @@
       <input type="text" name="email" id="email">
       <label for="telephone">Telephone</label>
       <input type="text" name="telephone" id="telephone">
-
       <label for="buyerType">Application Type</label>
-      <select class="secondary" name="buyerType" id="buyerType">
-        <option value="Purchase">Purchase</option>
-        <option value="FirstTimeBuyer">First Time Buyer</option>
-        <option value="Remortgage">Remortgage</option>
-        <option value="RaiseFunds">Raise Funds</option>
-      </select>
+        <select class="secondary" name="buyerType" id="buyerType">
+          <option value="Purchase">Purchase</option>
+          <option value="FirstTimeBuyer">First Time Buyer</option>
+          <option value="Remortgage">Remortgage</option>
+          <option value="RaiseFunds">Raise Funds</option>
+        </select>
       <label for="terms">
         <input type="checkbox" name="terms" value="">
         I agree to the terms and conditions <a href="#">See terms</a>
