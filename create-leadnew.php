@@ -1,3 +1,4 @@
+<?php
 
 // function test_input($data) {
 //   $data = trim ($data);
@@ -72,89 +73,45 @@ curl -X 'POST' \
   ],
 }'
 */
-//
-
-// $applicants = array();
-// for ($i = 1; $i <= $_POST['key']; $i++) {
-//     if (!empty($_POST['applicants'.$i]))
-//        $applicants[] = $_POST['applicants'.$i];
-
-//
-// $data = applicants(
-//   'firstName' =>
-//   )
-//
-
-// $data = array($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['telephone']);
-
-// foreach ($data as $data)
-//   ${$data} = sanitize($_POST[$data]);
-// return $data;
-
-// $data = ($_POST);
-// print_r($data);
-//
-// var_dump($applicants);
-//
-// exit;
-/*
 
 $data= [
+  "applicants" =>  [
+      "firstName" => $_POST["firstName"],
+      "lastName" => $_POST["lastName"],
+      "email" => $_POST["email"],
+      "telephone" => $_POST["telephone"],
+      ],
+    ];
 
-    applicants => [
+var_dump($data);
 
-      ["firstName"] => $_POST["firstName"],
-      ["lastName" =>] $_POST["lastName"],
-      ["email"] => $_POST["email"],
-      ["telephone"] => $_POST["telephone"],
-    ]
-];
 
-*/
-//
-// $data = array(
-//   "firstName" => $_POST("firstName"),
-//   "lastName" => $_POST("lastName"),
-//   "email" => $_POST("email"),
-//   "telephone" => $_POST("telephone")
-// );
-
-$data = array(
-  "BuyerType" => $_POST["BuyerType"],
-      "applicants" => array(
-        "firstName" => $_POST["firstName"],
-        "lastName" => $_POST["lastName"],
-        "email" => $_POST["email"],
-        "telephone" => $_POST["telephone"]
-      )
-);
-
-var_dump(json_encode($data));
 
 $ch = curl_init();
-
-$headers = [
+$header = [
   "X-API-KEY: 2528e9b2-7250-48fc-9371-4c13cd5991a4",
-  "accept: application/json",
-  "content-Type: text/json",
+  "accept: text/plain",
+  "content-Type: application/json",
 ];
 
 
 curl_setopt($ch, CURLOPT_URL, 'https://api.smartr365.com/api/v1/mortgage/lead/create');
-curl_setopt($ch, CURLOPT_HEADER, $headers);
+curl_setopt($ch, CURLOPT_HEADER, $header);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
 $response = curl_exec($ch);
 
+curl_close($ch);
+
 $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
 $responseData = json_decode($response, true);
 
 var_dump($status_code);
-//var_dump($response);
+var_dump($response);
 
-curl_close ($ch)
+
 
 ?>

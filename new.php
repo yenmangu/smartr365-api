@@ -19,6 +19,7 @@
       <input type="text" name="email" id="email">
       <label for="telephone">Telephone</label>
       <input type="text" name="telephone" id="telephone">
+
       <label for="buyerType">Application Type</label>
       <select class="secondary" name="buyerType" id="buyerType">
         <option value="Purchase">Purchase</option>
@@ -30,7 +31,6 @@
         <input type="checkbox" name="terms" value="">
         I agree to the terms and conditions <a href="#">See terms here..</a>
       </label>
-
       <input class="outline " type="submit" name="submit" id="submit">
       <input class="outline secondary" type="reset" name="reset" id="reset">
     </form>
