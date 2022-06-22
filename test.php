@@ -15,7 +15,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 $data = <<<DATA
 {
-
+  buyer
   "applicants": [
     {
 
@@ -29,14 +29,16 @@ $data = <<<DATA
 }
 DATA;
 
-
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-$status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
 //for debug only!
+$status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
 $status_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 var_dump($status_code);
+
 $resp = curl_exec($curl);
 curl_close($curl);
 var_dump($resp);
