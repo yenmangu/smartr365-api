@@ -1,4 +1,5 @@
 
+
 // function test_input($data) {
 //   $data = trim ($data);
 //   $data = stripslashes($data);
@@ -118,6 +119,14 @@ $data= [
 //   "email" => $_POST("email"),
 //   "telephone" => $_POST("telephone")
 // );
+
+// $data= array(
+//     "buyerType" => $_POST["buyerType"],
+//         [applicants]
+//           "firstName" => $_POST["firstName"],
+//           "lastName" => $_POST["lastName"],
+//           "email" => $_POST["email"],
+//           "telephone" => $_POST["telephone"],
 
 $data = array(
   "BuyerType" => $_POST["BuyerType"],
