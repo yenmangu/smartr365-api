@@ -10,7 +10,7 @@
 
     <h1>Applicant Form</h1>
 
-    <form action="create-lead.php" method="POST">
+    <form action="test.php" method="POST">
       <label for="firstName">First Name</label>
       <input type="text" name="firstName" id="firstName">
       <label for="lastName">Last Name</label>
@@ -29,7 +29,7 @@
       </select>
       <label for="terms">
         <input type="checkbox" name="terms" value="">
-        I agree to the terms and conditions
+        I agree to the terms and conditions <a href="#">See terms here..</a>
       </label>
 
       <input class="outline " type="submit" name="submit" id="submit">
