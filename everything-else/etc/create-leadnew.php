@@ -1,60 +1,60 @@
 <?php
 
-// function test_input($data) {
-//   $data = trim ($data);
-//   $data = stripslashes($data);
-//   $data = htmlspecialchars($data);
-//   return $data;
-// };
+function test_input($data) {
+  $data = trim ($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+};
 
-// function filterEmail($field){
-//   // Sanitize e-mail address
-//   $field = filter_var(trim($field), FILTER_SANITIZE_EMAIL);
+function filterEmail($field){
+  // Sanitize e-mail address
+  $field = filter_var(trim($field), FILTER_SANITIZE_EMAIL);
 
-//   // Validate e-mail address
-//   if(filter_var($field, FILTER_VALIDATE_EMAIL)){
-//       return $field;
-//   } else{
-//       return FALSE;
-//   }
-// }
+  // Validate e-mail address
+  if(filter_var($field, FILTER_VALIDATE_EMAIL)){
+      return $field;
+  } else{
+      return FALSE;
+  }
+}
 
-// // Define variables and initialize with empty values
-// $nameErr = $lastNameErr = $emailErr = "";
-// $firstName = $lastName = $email = "";
+// Define variables and initialize with empty values
+$nameErr = $lastNameErr = $emailErr = "";
+$firstName = $lastName = $email = "";
 
-// // Processing form data when form is submitted
-// if($_SERVER["REQUEST_METHOD"] == "POST"){
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-//   // Validate first name
-//   if(empty($_POST["firstName"])){
-//       $nameErr = "Please enter your name.";
-//   } else {
-//       $name = Test_input($_POST["firstName"]);
-//       if($name == FALSE){
-//           $nameErr = "Please enter a valid first name.";
-//       }
-//   }
+  // Validate first name
+  if(empty($_POST["firstName"])){
+      $nameErr = "Please enter your name.";
+  } else {
+      $name = Test_input($_POST["firstName"]);
+      if($name == FALSE){
+          $nameErr = "Please enter a valid first name.";
+      }
+  }
 
-//   if(empty($_POST["lastName"])){
-//       $lastNameErr = "Please enter your name.";
-//   } else {
-//       $lastName = Test_input($_POST["lastName"]);
-//       if($lastName == FALSE){
-//           $lastNameErr = "Please enter a valid last name.";
-//       }
-//   }
+  if(empty($_POST["lastName"])){
+      $lastNameErr = "Please enter your name.";
+  } else {
+      $lastName = Test_input($_POST["lastName"]);
+      if($lastName == FALSE){
+          $lastNameErr = "Please enter a valid last name.";
+      }
+  }
 
-//     // Validate email address
-//   if(empty($_POST["email"])){
-//     $emailErr = "Please enter your email address.";
-// } else {
-//     $email = filterEmail($_POST["email"]);
-//     if($email == FALSE){
-//         $emailErr = "Please enter a valid email address.";
-//     }
-//   }
-// }
+    // Validate email address
+  if(empty($_POST["email"])){
+    $emailErr = "Please enter your email address.";
+} else {
+    $email = filterEmail($_POST["email"]);
+    if($email == FALSE){
+        $emailErr = "Please enter a valid email address.";
+    }
+  }
+}
 
 /*
 curl -X 'POST' \

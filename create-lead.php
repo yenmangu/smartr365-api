@@ -1,5 +1,42 @@
 <?php
 
+// Define variables and initialize with empty values
+$nameErr = $lastNameErr = $emailErr = "";
+$firstName = $lastName = $email = "";
+
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+  // Validate first name
+  if(empty($_POST["firstName"])){
+      $nameErr = "Please enter your name.";
+  } else {
+      $name = Test_input($_POST["firstName"]);
+      if($name == FALSE){
+          $nameErr = "Please enter a valid first name.";
+      }
+  }
+
+  if(empty($_POST["lastName"])){
+      $lastNameErr = "Please enter your name.";
+  } else {
+      $lastName = Test_input($_POST["lastName"]);
+      if($lastName == FALSE){
+          $lastNameErr = "Please enter a valid last name.";
+      }
+  }
+
+    // Validate email address
+  if(empty($_POST["email"])){
+    $emailErr = "Please enter your email address.";
+} else {
+    $email = filterEmail($_POST["email"]);
+    if($email == FALSE){
+        $emailErr = "Please enter a valid email address.";
+    }
+  }
+}
+
 $data = array(
 
   "applicants"=> [
@@ -12,6 +49,10 @@ $data = array(
   ],
   "buyerType" => $_POST["buyerType"],
 );
+
+
+var_dump($data);
+
 
 $data = json_encode($data);
 
