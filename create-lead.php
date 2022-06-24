@@ -19,7 +19,6 @@ $ch = curl_init();
 
 $headers = [
   "x-api-key: 2528e9b2-7250-48fc-9371-4c13cd5991a4",
-  "organisationId: d75acf39-07c4-4c63-995a-e7055c58c973",
   "accept: application/json",
   "content-Type: application/json",
 ];
