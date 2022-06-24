@@ -11,7 +11,7 @@ $data = array(
     "organisationId" => "d75acf39-07c4-4c63-995a-e7055c58c973",
     "introducerId" => "0",
     "introducerBranchId" => "0",
-    "introducerNegotiatorId" => "0",
+    "introducerNegotiatorId" => "0"
 );
 
 var_dump(json_encode($data));
@@ -21,8 +21,8 @@ $ch = curl_init();
 $headers = [
   "X-API-KEY: 2528e9b2-7250-48fc-9371-4c13cd5991a4",
   "organisationId: d75acf39-07c4-4c63-995a-e7055c58c973",
-  "accept: application/json",
-  "content-Type: text/json",
+  "accept: text/plain",
+  "content-Type: application/json",
   "content-Length: 150"
 ];
 
@@ -42,6 +42,6 @@ $responseData = json_decode($response, true);
 var_dump($status_code);
 var_dump($response);
 
-curl_close ($ch)
+curl_close ($ch);
 
 ?>
