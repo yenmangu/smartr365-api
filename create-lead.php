@@ -36,7 +36,7 @@ var_dump($response);
 // TO DEBUG ---
 // $responseData = json_decode($response, true);
 //var_dump($data);
- var_dump($status_code);
+var_dump($status_code);
 // var_dump($response);
 
 curl_close ($ch);
