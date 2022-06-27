@@ -66,15 +66,15 @@ const checkTelephone = () => {
     return valid;
 };
 
-// const accept = () => {
-//     if (!document.querySelector('#accept').checked) {
-//         showError(accept, 'You must accept the terms to continue')
-//     } else {
-//         showSuccess(accept);
-//         valid = true;
-//     }
-//     return valid;
-// };
+const checkAccept = () => {
+    if (!document.querySelector('#accept').checked) {
+        showError(accept, 'You must accept the terms to continue')
+    } else {
+        showSuccess(accept);
+        valid = true;
+    }
+    return valid;
+};
 
 const isFirstNameValid = (firstName) => {
     const re = /^[a-zA-Z]+$/;
@@ -126,17 +126,21 @@ form.addEventListener('submit', function(e) {
     let isFirstNameValid = checkFirstName(),
         isLastNameValid = checkLastName(),
         isEmailValid = checkEmail(),
-        isTelephoneValid = checkTelephone();
+        isTelephoneValid = checkTelephone(),
+        isAcceptValid = checkAccept();
 
 
     let
         isFormValid = isFirstNameValid &&
         isLastNameValid &&
         isEmailValid &&
-        isTelephoneValid;
+        isTelephoneValid &&
+        isAcceptValid;
+
 
     if (!isFormValid) {
         e.preventDefault();
+        formField.classList
     }
 
 });

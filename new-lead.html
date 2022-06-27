@@ -4,10 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>DAS Applicant Form</title>
-  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-  <style>
+  <link rel="stylesheet" href="css/styles.css">
 
-  </style>
 </head>
 
 <body style="padding:40px">
@@ -36,13 +34,15 @@
           <input type="text" name="telephone" id="telephone">
           <small></small>
         </div>
-        <label for="buyerType">Application Type</label>
-        <select class="secondary" name="buyerType" id="buyerType">
+        <div class="form-field dropdown">
+          <label for="buyerType" class="buyerType">Application Type</label>
+          <select class="secondary" name="buyerType" id="buyerType">
             <option value="Purchase">Purchase</option>
             <option value="FirstTimeBuyer">First Time Buyer</option>
             <option value="Remortgage">Remortgage</option>
             <option value="RaiseFunds">Raise Funds</option>
           </select>
+        </div>
         <div class="form-field">
           <label for="accept">
               <input type="checkbox" id="accept" name="accept" value="yes">
@@ -50,9 +50,9 @@
             </label>
           <small></small>
         </div>
-        <div class="form-field">
+        <div class="form-field buttons">
           <input class="outline " type="submit" name="appy" id="apply">
-          <input class="outline secondary" type="reset" name="reset" id="reset">
+          <input class="clear" type="reset" name="reset" id="reset">
         </div>
       </form>
     </div>
