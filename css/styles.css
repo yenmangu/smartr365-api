@@ -1,3 +1,8 @@
+:root {
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -16,7 +21,6 @@ body {
     background-color: #121e2b;
 }
 
-;
 form {
     padding: 10 20px;
 }
@@ -25,18 +29,21 @@ h1 {
     font-size: 1.5em;
     text-align: center;
     margin-bottom: 20px;
-    color: #699391;
+    color: #00b8ac;
 }
 
 .form-field {
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
-    color: #699391;
+    color: #00b8ac;
 }
 
 .form-field input {
-    height: 1.8em;
+    height: 2em;
+    border: rgb(255, 255, 255);
+    border-radius: 0;
+    border-style: solid;
 }
 
 .form-field label {
@@ -84,29 +91,8 @@ h1 {
     background-color: aquamarine;
 }
 
-
-/* .select-selected {
-    background-color: #00b8ac;
-}
-
-.select-selected:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
-}
-
-.select-selected.select-arrow-active:after {
-    border-color: transparent transparent #fff transparent;
-    top: 7px;
-} */
-
 .dropdown select {
-    background-color: #0563af;
+    background-color: #699391;
     color: white;
     padding: 12px;
     width: 100%;
@@ -134,4 +120,26 @@ h1 {
 
 .dropdown select option {
     padding: 30px;
+}
+
+.check-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.form-field #accept {
+    height: auto;
+}
+a {
+    text-decoration: none;
+    color: #fff;
 }

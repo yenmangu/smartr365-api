@@ -2,6 +2,7 @@ const firstNameEl = document.querySelector('#firstName');
 const lastNameEl = document.querySelector('#lastName');
 const emailEl = document.querySelector('#email');
 const telephoneEl = document.querySelector('#telephone');
+const checked = document.getElementById('#accept')
 
 const form = document.querySelector('#apply');
 
@@ -66,15 +67,15 @@ const checkTelephone = () => {
     return valid;
 };
 
-const checkAccept = () => {
-    if (!document.querySelector('#accept').checked) {
-        showError(accept, 'You must accept the terms to continue')
-    } else {
-        showSuccess(accept);
-        valid = true;
-    }
-    return valid;
-};
+// const checkAccept = () => {
+//     if (!document.querySelector('#accept').checked) {
+//         showError(accept, 'You must accept the terms to continue')
+//     } else {
+//         showSuccess(accept);
+//         valid = true;
+//     }
+//     return valid;
+// };
 
 const isFirstNameValid = (firstName) => {
     const re = /^[a-zA-Z]+$/;
@@ -126,22 +127,25 @@ form.addEventListener('submit', function(e) {
     let isFirstNameValid = checkFirstName(),
         isLastNameValid = checkLastName(),
         isEmailValid = checkEmail(),
-        isTelephoneValid = checkTelephone(),
-        isAcceptValid = checkAccept();
+        isTelephoneValid = checkTelephone();
 
 
     let
-        isFormValid = isFirstNameValid &&
+        isFormValid = 
+        isFirstNameValid &&
         isLastNameValid &&
         isEmailValid &&
         isTelephoneValid &&
-        isAcceptValid;
+        checked.checked == true;
 
 
     if (!isFormValid) {
-        e.preventDefault();
-        formField.classList
-    }
+        e.preventDefault()
+        document.getElementById('#apply').disabled == true;
+    } else {
+        document.getElementById('#apply').disabled == false;
+
+    };
 
 });
 
