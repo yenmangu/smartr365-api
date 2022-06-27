@@ -11,16 +11,16 @@
     <h1>Applicant Form</h1>
     <form action="create-lead.php" method="POST">
       <label for="firstName">First Name</label>
-      <input type="text" name="firstName" id="firstName">
+      <input type="text" name="firstName" pattern="[A-Z][a-z]" id="firstName">
       <span class="firstNameError" aria-live="polite"></span>
       <label for="lastName">Last Name</label>
-      <input type="text" name="lastName" id="lastName">
+      <input type="text" name="lastName" pattern="[A-Z][a-z]" id="lastName">
       <span class="lastNameError" aria-live="polite"></span>
       <label for="email">Email</label>
       <input type="text" name="email" id="email">
       <span class="Error" aria-live="polite"></span>
       <label for="telephone">Telephone</label>
-      <input type="text" name="telephone" id="telephone">
+      <input type="text" name="telephone" pattern="[0-9]+" id="telephone">
       <span class="telephoneError" aria-live="polite"></span>
       <label for="buyerType">Application Type</label>
         <select class="secondary" name="buyerType" id="buyerType">

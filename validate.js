@@ -1,4 +1,6 @@
-const formFirstName = document.getElementsByTagName('form')[1];
+// first name validation
+
+const formFirstName = document.getElementsByTagName('form')[0];
 const firstName = document.getElementById('firstName');
 const firstNameError = document.querySelector('#firstName + span.firstNameError');
 
@@ -22,8 +24,44 @@ function showFirstError() {
         firstNameError.textContent = "You need to enter your first name";
     } else if (firstName.validity.typeMismatch) {
         firstNameError.textContent = "You must only enter letters";
+    } else if (firstName.validity.patternMismatch) {
+        firstNameError.textContent = "You must only enter letters";
     }
 };
+
+
+// last name validation
+
+const formLastName = document.getElementsByTagName('form')[1];
+const lastName = document.getElementById('lastName');
+const lastNameError = document.querySelector('#lastName + span.lastNameError');
+
+lastName.addEventListener('input', function(event) {
+    if (lastName.validity.valid) {
+        lastNameError.className = 'lastNameError';
+    } else {
+        showLastError();
+    }
+});
+
+formLastName.addEventListener('submit', function(event) {
+    if (!lastName.validity.valid) {
+        showLastError();
+        event.preventDefault();
+    }
+});
+
+function showLastError() {
+    if (lastName.validity.valueMissing) {
+        lastNameError.textContent = "You need to enter your last name";
+    } else if (lastName.validity.typeMismatch) {
+        lastNameError.textContent = "You must only enter letters";
+    } else if (lastName.validity.patternMismatch) {
+        lastNameError.textContent = "You must only enter letters";
+    }
+};
+
+// email validation
 
 const formEmail = document.getElementsByTagName('form')[2];
 
@@ -50,7 +88,7 @@ formEmail.addEventListener('submit', function(event) {
         // if it isnt, we display an appropriate error message
         showError();
         // then we prevent the form from being sent by cancelling the event
-        eevent.preventDefault();
+        event.preventDefault();
 
     }
 });
@@ -69,4 +107,33 @@ function showError() {
         emailError.textContent = `E-mail should be at least ${email.minlength}
         characters, you have only entered ${email.value.length}.`
     }
-}
+};
+
+// telephone number validation
+
+const formTelephone = document.getElementsByTagName('form')[3];
+const telephone = document.getElementById('telephone');
+const telephoneError = document.querySelector('#telephone + span.telephoneError');
+
+telephone.addEventListener('input', function(event) {
+    if (telephone.validity.valid) {
+        telephoneError.className = 'telephoneError';
+    } else {
+        showTelephoneError();
+    }
+});
+
+formTelephone.addEventListener('submit', function(event) {
+    if (!telephone.validity.valid) {
+        showTelephoneError();
+        event.preventDefault();
+    }
+});
+
+function showTelephoneError() {
+    if (telephone.validity.valueMissing) {
+        telephoneError.textContent = "You need to enter your telephone number";
+    } else if (telephone.validity.typeMismatch) {
+        telephoneError.textContent = "You must only enter numbers";
+    }
+};
