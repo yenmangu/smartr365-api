@@ -2,9 +2,10 @@ const firstNameEl = document.querySelector('#firstName');
 const lastNameEl = document.querySelector('#lastName');
 const emailEl = document.querySelector('#email');
 const telephoneEl = document.querySelector('#telephone');
-const checked = document.getElementById('#accept')
+const checkedEl = document.getElementById("accept");
+const submitButton = document.getElementById("submitButton");
 
-const form = document.querySelector('#apply');
+const form = document.querySelector('#newLead');
 
 const checkFirstName = () => {
     let valid = false;
@@ -12,7 +13,7 @@ const checkFirstName = () => {
     const firstName = firstNameEl.value.trim();
 
     if (!isRequired(firstName)) {
-        showError(firstNameEl, 'First name cannot be blank');
+        showError(firstNameEl, 'First name cannot be left blank');
     } else if (!isFirstNameValid(firstName)) {
         showError(firstNameEl, 'First name must only contain letters');
     } else {
@@ -28,7 +29,7 @@ const checkLastName = () => {
     const lastName = lastNameEl.value.trim();
 
     if (!isRequired(lastName)) {
-        showError(lastNameEl, 'Last name cannot be blank');
+        showError(lastNameEl, 'Last name cannot be left blank');
     } else if (!isLastNameValid(lastName)) {
 
         showError(lastNameEl, 'Last name must only contain letters');
@@ -44,9 +45,9 @@ const checkEmail = () => {
     let valid = false;
     const email = emailEl.value.trim();
     if (!isRequired(email)) {
-        showError(emailEl, 'Email cannot be blank.');
+        showError(emailEl, 'Email field cannot be left blank');
     } else if (!isEmailValid(email)) {
-        showError(emailEl, 'Email is not valid.')
+        showError(emailEl, 'Email is not valid')
     } else {
         showSuccess(emailEl);
         valid = true;
@@ -67,15 +68,6 @@ const checkTelephone = () => {
     return valid;
 };
 
-// const checkAccept = () => {
-//     if (!document.querySelector('#accept').checked) {
-//         showError(accept, 'You must accept the terms to continue')
-//     } else {
-//         showSuccess(accept);
-//         valid = true;
-//     }
-//     return valid;
-// };
 
 const isFirstNameValid = (firstName) => {
     const re = /^[a-zA-Z]+$/;
@@ -120,35 +112,41 @@ const showSuccess = (input) => {
     error.textContent = '';
 }
 
-
-
-form.addEventListener('submit', function(e) {
+// const isBoxChecked = () => { 
+//     checkedEl.addEventListener("click", function () {
+//         if (checkedEl.checked) {
+//             submitButton.disabled == false;
+//         } else {
+//             submitButton.disabled == true;
+//         }
+//     });
+// };
+form.addEventListener("submit", function() {
     //validate fields
     let isFirstNameValid = checkFirstName(),
         isLastNameValid = checkLastName(),
         isEmailValid = checkEmail(),
         isTelephoneValid = checkTelephone();
-
-
     let
         isFormValid = 
         isFirstNameValid &&
         isLastNameValid &&
         isEmailValid &&
-        isTelephoneValid &&
-        checked.checked == true;
+        isTelephoneValid;
 
-
-    if (!isFormValid) {
-        e.preventDefault()
-        document.getElementById('#apply').disabled == true;
-    } else {
-        document.getElementById('#apply').disabled == false;
-
+    if (isFormValid) {
+        checkedEl.addEventListener("click", function () {
+            if (checkedEl.checked) {
+                submitButton.disabled == false;
+            } else {
+                submitButton.disabled == true;
+            }
+        });
     };
-
+    
 });
 
+// real time validation
 const debounce = (fn, delay = 500) => {
 
     let timeoutId;
@@ -162,7 +160,7 @@ const debounce = (fn, delay = 500) => {
         }, delay);
     };
 };
-
+//event delegation
 form.addEventListener('input', debounce(function(e) {
     switch (e.target.id) {
         case 'firstName':

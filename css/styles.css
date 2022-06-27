@@ -71,7 +71,7 @@ h1 {
     color: #699391;
 }
 
-.form-field .outline,
+.form-field .submitButton,
 .clear#reset {
     height: 2.6em;
     margin-bottom: 1.2rem;
@@ -81,7 +81,7 @@ h1 {
     font-weight: 600;
 }
 
-.outline#apply:hover {
+.submitButton#submitButton:hover {
     background-color: transparent;
     color: #00b8ac;
     border: solid 5px #00b8ac;
