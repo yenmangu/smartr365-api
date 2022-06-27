@@ -6,7 +6,10 @@ const telephoneEl = document.querySelector('#telephone');
 const form = document.querySelector('#apply');
 
 const checkFirstName = () => {
+    let valid = false;
+
     const firstName = firstNameEl.value.trim();
+
     if (!isRequired(firstName)) {
         showError(firstNameEl, 'First name cannot be blank');
     } else if (!isFirstNameValid(firstName)) {
@@ -19,12 +22,15 @@ const checkFirstName = () => {
 };
 
 const checkLastName = () => {
+    let valid = false;
+
     const lastName = lastNameEl.value.trim();
+
     if (!isRequired(lastName)) {
         showError(lastNameEl, 'Last name cannot be blank');
     } else if (!isLastNameValid(lastName)) {
 
-        showError(lastName, 'Last name must only contain letters');
+        showError(lastNameEl, 'Last name must only contain letters');
 
     } else {
         showSuccess(lastNameEl);
@@ -34,23 +40,25 @@ const checkLastName = () => {
 };
 
 const checkEmail = () => {
+    let valid = false;
     const email = emailEl.value.trim();
     if (!isRequired(email)) {
-        showError(emailEl, 'E-mail field cannot be blank');
-
+        showError(emailEl, 'Email cannot be blank.');
     } else if (!isEmailValid(email)) {
-        showError(email, 'E-mail is not valid')
+        showError(emailEl, 'Email is not valid.')
     } else {
         showSuccess(emailEl);
         valid = true;
-    };
+    }
     return valid;
-}
-
+};
 const checkTelephone = () => {
+    let valid = false;
     const telephone = telephoneEl.value.trim();
     if (!isRequired(telephone)) {
-        showError(telephone, 'Telephone field cannot be left blank');
+        showError(telephoneEl, 'Telephone field cannot be left blank');
+    } else if (!isTelephoneValid(telephone)) {
+        showError(telephoneEl, 'Number is not valid')
     } else {
         showSuccess(telephoneEl);
         valid = true;
@@ -85,7 +93,7 @@ const isEmailValid = (email) => {
 };
 
 const isTelephoneValid = (telephone) => {
-    const re = /[0 - 9] + $/;
+    const re = /^[0-9]+$/;
     return re.test(telephone);
 };
 
@@ -114,8 +122,7 @@ const showSuccess = (input) => {
 
 
 form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
+    //validate fields
     let isFirstNameValid = checkFirstName(),
         isLastNameValid = checkLastName(),
         isEmailValid = checkEmail(),
@@ -128,13 +135,13 @@ form.addEventListener('submit', function(e) {
         isEmailValid &&
         isTelephoneValid;
 
-    if (isFormValid) {
-
+    if (!isFormValid) {
+        e.preventDefault();
     }
 
 });
 
-const debounce = (fn, delay = 200) => {
+const debounce = (fn, delay = 500) => {
 
     let timeoutId;
 
