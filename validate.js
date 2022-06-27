@@ -3,8 +3,27 @@ const firstName = document.getElementById('firstName');
 const firstNameError = document.querySelector('#firstName + span.firstNameError');
 
 firstName.addEventListener('input', function(event) {
-    if
-})
+    if (firstName.validity.valid) {
+        firstNameError.className = 'firstNameError';
+    } else {
+        showFirstError();
+    }
+});
+
+formFirstName.addEventListener('submit', function(event) {
+    if (!firstName.validity.valid) {
+        showFirstError();
+        event.preventDefault();
+    }
+});
+
+function showFirstError() {
+    if (firstName.validity.valueMissing) {
+        firstNameError.textContent = "You need to enter your first name";
+    } else if (firstName.validity.typeMismatch) {
+        firstNameError.textContent = "You must only enter letters";
+    }
+};
 
 const formEmail = document.getElementsByTagName('form')[2];
 
