@@ -12,12 +12,16 @@
     <form action="create-lead.php" method="POST">
       <label for="firstName">First Name</label>
       <input type="text" name="firstName" id="firstName">
+      <span class="firstNameError" aria-live="polite"></span>
       <label for="lastName">Last Name</label>
       <input type="text" name="lastName" id="lastName">
+      <span class="lastNameError" aria-live="polite"></span>
       <label for="email">Email</label>
       <input type="text" name="email" id="email">
+      <span class="Error" aria-live="polite"></span>
       <label for="telephone">Telephone</label>
       <input type="text" name="telephone" id="telephone">
+      <span class="telephoneError" aria-live="polite"></span>
       <label for="buyerType">Application Type</label>
         <select class="secondary" name="buyerType" id="buyerType">
           <option value="Purchase">Purchase</option>
