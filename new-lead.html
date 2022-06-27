@@ -11,26 +11,26 @@
   <main>
 
     <h1>Applicant Form</h1>
-    <form action="create-lead.php" method="POST">
+    <form action="create-lead.php" id="apply" class="form" method="POST">
       <div class="form-field">
         <label for="firstName">First Name</label>
         <input type="text" name="firstName" id="firstName" id="firstName">
-        <small class="firstNameError" aria-live="polite"></small>
+        <small></small>
       </div>
-      <div class="form-field">
+      <div class="form-field ">
         <label for="lastName">Last Name</label>
         <input type="text" name="lastName" id="lastName" id="lastName">
-        <small class="lastNameError" aria-live="polite"></small>
+        <small></small>
       </div>
       <div class="form-field">
         <label for="email">Email</label>
         <input type="text" name="email" id="email">
-        <small class="Error" aria-live="polite"></small>
+        <small></small>
       </div>
       <div class="form-field">
         <label for="telephone">Telephone</label>
         <input type="text" name="telephone" id="telephone">
-        <small class="telephoneError" aria-live="polite"></small>
+        <small></small>
       </div>
       <label for="buyerType">Application Type</label>
       <select class="secondary" name="buyerType" id="buyerType">
@@ -43,8 +43,10 @@
         <input type="checkbox" name="terms" value="">
         I agree to the terms and conditions <a href="#">See terms</a>
       </label>
-      <input class="outline " type="submit" name="submit" id="submit">
-      <input class="outline secondary" type="reset" name="reset" id="reset">
+      <div class="form-field">
+        <input class="outline " type="submit" name="submit" id="submit">
+        <input class="outline secondary" type="reset" name="reset" id="reset">
+      </div>
     </form>
   </main>
 </body>
