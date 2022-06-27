@@ -24,8 +24,6 @@ function showFirstError() {
         firstNameError.textContent = "You need to enter your first name";
     } else if (firstName.validity.typeMismatch) {
         firstNameError.textContent = "You must only enter letters";
-    } else if (firstName.validity.patternMismatch) {
-        firstNameError.textContent = "You must only enter letters";
     }
 };
 
@@ -55,8 +53,6 @@ function showLastError() {
     if (lastName.validity.valueMissing) {
         lastNameError.textContent = "You need to enter your last name";
     } else if (lastName.validity.typeMismatch) {
-        lastNameError.textContent = "You must only enter letters";
-    } else if (lastName.validity.patternMismatch) {
         lastNameError.textContent = "You must only enter letters";
     }
 };
