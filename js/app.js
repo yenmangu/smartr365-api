@@ -2,8 +2,8 @@ const firstNameEl = document.querySelector('#firstName');
 const lastNameEl = document.querySelector('#lastName');
 const emailEl = document.querySelector('#email');
 const telephoneEl = document.querySelector('#telephone');
-const checkBox = document.getElementById("accept");
-const submitBtn = document.getElementById("submitButton");
+// const checkBox = document.getElementById("accept");
+// const submitBtn = document.getElementById("submitButton");
 
 const form = document.querySelector('#newLead');
 
@@ -112,23 +112,33 @@ const showSuccess = (input) => {
     error.textContent = '';
 }
 
-checkBox.addEventListener("click", function () {
-    let submitBtn = document.getElementById("submitButton");
-    let isFirstNameValid = checkFirstName(),
-        isLastNameValid = checkLastName(),
-        isEmailValid = checkEmail(),
-        isTelephoneValid = checkTelephone();
-    let
-        isFormValid = 
-        isFirstNameValid &&
-        isLastNameValid &&
-        isEmailValid &&
-        isTelephoneValid;
+// let submitBtn = document.getElementById("submitButton");
+// let isFirstNameValid = checkFirstName(),
+//     isLastNameValid = checkLastName(),
+//     isEmailValid = checkEmail(),
+//     isTelephoneValid = checkTelephone();
+// let
+//     isFormValid =
+//     isFirstNameValid &&
+//     isLastNameValid &&
+//     isEmailValid &&
+// isTelephoneValid;
+const checkBox = document.getElementById("accept");
+const submitBtn = document.getElementById("submitButton");
 
-        if (checkBox.checked && isFormValid) {
-        submitBtn.disabled == false;
+checkBox.addEventListener("click", function() {
+    let valid = false;
+    let isFormValid = false;
+    if (checkFirstName() == valid &&
+        checkLastName() == valid &&
+        checkEmail() == valid &&
+        checkTelephone() == valid) {
+        isFormValid = true;
+    }
+    if (checkBox.checked && isFormValid) {
+        submitBtn.disabled = false;
     } else {
-        submitBtn.disabled == true;
+        submitBtn.disabled = true;
     }
 });
 
@@ -164,3 +174,17 @@ form.addEventListener('input', debounce(function(e) {
             break;
     }
 }));
+
+var objXMLHttpRequest = new XMLHttpRequest();
+objXMLHttpRequest.onreadystatechange = function() {
+    if (objXMLHttpRequest.readyState === 4) {
+        if (objXMLHttpRequest.status === 200) {
+            alert(objXMLHttpRequest.responseText);
+        } else {
+            alert('Error Code: ' + objXMLHttpRequest.status);
+            alert('Error Message: ' + objXMLHttpRequest.statusText);
+        }
+    }
+}
+objXMLHttpRequest.open('GET', 'request_ajax_data.php');
+objXMLHttpRequest.send();
