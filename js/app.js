@@ -2,8 +2,8 @@ const firstNameEl = document.querySelector('#firstName');
 const lastNameEl = document.querySelector('#lastName');
 const emailEl = document.querySelector('#email');
 const telephoneEl = document.querySelector('#telephone');
-const checkedEl = document.getElementById("accept");
-const submitButton = document.getElementById("submitButton");
+// const checkBox = document.getElementById("accept");
+// const submitButton = document.getElementById("submitButton");
 
 const form = document.querySelector('#newLead');
 
@@ -121,8 +121,9 @@ const showSuccess = (input) => {
 //         }
 //     });
 // };
-form.addEventListener("submit", function() {
-    //validate fields
+
+
+checkBox.addEventListener("click", function () {
     let isFirstNameValid = checkFirstName(),
         isLastNameValid = checkLastName(),
         isEmailValid = checkEmail(),
@@ -134,17 +135,13 @@ form.addEventListener("submit", function() {
         isEmailValid &&
         isTelephoneValid;
 
-    if (isFormValid) {
-        checkedEl.addEventListener("click", function () {
-            if (checkedEl.checked) {
-                submitButton.disabled == false;
-            } else {
-                submitButton.disabled == true;
-            }
-        });
-    };
-    
+        if (checkBox.checked && isFormValid) {
+        submitBtn.disabled == false;
+    } else {
+        submitBtn.disabled == true;
+    }
 });
+
 
 // real time validation
 const debounce = (fn, delay = 500) => {
