@@ -110,19 +110,54 @@ const showSuccess = (input) => {
 
         const error = formField.querySelector('small');
         error.textContent = '';
+}
+    
+//final validation for the form
+const checkBox = document.getElementById("accept");
+const submitBtn = document.getElementById("submitButton");
+const evalResult = "";
+const hiddenBox = document.getElementById("check-container");
+
+hiddenBox.style.visibility = "hidden";
+
+function eval () {
+   
+    let isFirstNameValid = checkFirstName(),
+    isLastNameValid = checkLastName(),
+    isEmailValid = checkEmail(),
+    isTelephoneValid = checkTelephone();
+
+    let isFormValid = 
+    isFirstNameValid &&
+    isLastNameValid &&
+    isEmailValid &&
+    isTelephoneValid;
+
+    if (isFormValid) {
+        evalResult = true;
     }
-    //sending the data
+     return evalResult;   
+};
 
+if (evalResult === true) {
+    hiddenBox.style.visibility = "visible"
+}
 
+checkBox.addEventListener("click", function(){
+    if (checkBox.checked == true) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+}); 
 
 form.addEventListener('submit', function(e) {
 
     e.preventDefault();
 
-
     const formData = new FormData(this);
-
-    fetch('./create-lead.php', {
+   
+    fetch('post.php', {
 
         method: 'post',
         body: formData
@@ -130,66 +165,16 @@ form.addEventListener('submit', function(e) {
     }).then(function(response) {
         return response.text();
     }).then(function(text) {
-        console.log(text)
+        console.log(text);
     }).catch(function(error) {
         console.log(error);
     });
 
-
-});
-
-
-//final validation for the form
-const checkBox = document.getElementById("accept");
-const submitBtn = document.getElementById("submitButton");
-
-checkBox.addEventListener("click", function() {
-    let valid = false;
-    let isFormValid = false;
-    if (checkFirstName() == valid &&
-        checkLastName() == valid &&
-        checkEmail() == valid &&
-        checkTelephone() == valid)
-        isFormValid = true;
-
-    if (checkBox.checked && !isFormValid == true) {
-        submitBtn.disabled = true;
-    } else {
-        submitBtn.disabled = false;
-    }
-
-    form.addEventListener('submit', function(e) {
-
-        e.preventDefault();
-
-
-        const formData = new FormData(this);
-        const response = fetch('./create-lead.php', {
-
-            method: 'post',
-            body: formData
-
-        }).then(function(response) {
-            return response.text();
-        }).then(function(text) {
-            console.log(text)
-        }).catch(function(error) {
-            console.log(error);
-        });
-
-        if (response.status === 200) {
-            console.log("OKAY")
-        } else {
-            console.log("ERROR")
-        }
-
-
-    });
 });
 
 
 // real time validation
-const debounce = (fn, delay = 500) => {
+function debounce(fn, delay = 500) {
 
     let timeoutId;
 
@@ -198,10 +183,10 @@ const debounce = (fn, delay = 500) => {
             clearTimeout(timeoutId);
         }
         timeoutId = setTimeout(() => {
-            fn.apply(null, args)
+            fn.apply(null, args);
         }, delay);
     };
-};
+}
 //event delegation
 form.addEventListener('input', debounce(function(e) {
     switch (e.target.id) {
@@ -219,19 +204,3 @@ form.addEventListener('input', debounce(function(e) {
             break;
     }
 }));
-
-
-
-// var objXMLHttpRequest = new XMLHttpRequest();
-// objXMLHttpRequest.onreadystatechange = function() {
-//     if (objXMLHttpRequest.readyState === 4) {
-//         if (objXMLHttpRequest.status === 200) {
-//             alert(objXMLHttpRequest.responseText);
-//         } else {
-//             alert('Error Code: ' + objXMLHttpRequest.status);
-//             alert('Error Message: ' + objXMLHttpRequest.statusText);
-//         }
-//     }
-// }
-// objXMLHttpRequest.open('GET', 'request_ajax_data.php');
-// objXMLHttpRequest.send();
