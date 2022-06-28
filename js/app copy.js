@@ -149,41 +149,39 @@ checkBox.addEventListener("click", function() {
     if (checkFirstName() == valid &&
         checkLastName() == valid &&
         checkEmail() == valid &&
-        checkTelephone() == valid)
+        checkTelephone() == valid) {
         isFormValid = true;
-
-    if (checkBox.checked && !isFormValid == true) {
-        submitBtn.disabled = true;
-    } else {
-        submitBtn.disabled = false;
     }
-
+    if (checkBox.checked && isFormValid == true) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
     form.addEventListener('submit', function(e) {
 
         e.preventDefault();
 
 
         const formData = new FormData(this);
+
         const response = fetch('./create-lead.php', {
 
             method: 'post',
             body: formData
 
-        }).then(function(response) {
-            return response.text();
-        }).then(function(text) {
-            console.log(text)
-        }).catch(function(error) {
-            console.log(error);
         });
-
         if (response.status === 200) {
-            console.log("OKAY")
+            console.log("OKAY");
         } else {
             console.log("ERROR")
         }
 
-
+    }).then(function(response) {
+        return response.text();
+    }).then(function(text) {
+        console.log(text)
+    }).catch(function(error) {
+        console.log(error);
     });
 });
 

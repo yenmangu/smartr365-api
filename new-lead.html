@@ -14,7 +14,8 @@
 
     <h1 class="form-h1">Applicant Form</h1>
     <div class="container-lead">
-      <form action="create-lead.php" id="newLead" class="form" method="POST">
+      <!-- <form action="create-lead.php" id="newLead" class="form" method="POST"> -->
+      <form id="newLead" class="form">
         <div class="form-field">
           <label for="firstName">First Name</label>
           <input type="text" name="firstName" id="firstName" id="firstName">
@@ -52,7 +53,7 @@
           <small></small>
         </div>
         <div class="form-field buttons">
-          <button disabled class="submitButton" name="submitButton" type="submit" id="submitButton">
+          <button class="submitButton" name="submitButton" type="submit" id="submitButton">
             Submit
           </button>
           <input class="clear" type="reset" name="reset" id="reset">
