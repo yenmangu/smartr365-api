@@ -2,8 +2,8 @@ const firstNameEl = document.querySelector('#firstName');
 const lastNameEl = document.querySelector('#lastName');
 const emailEl = document.querySelector('#email');
 const telephoneEl = document.querySelector('#telephone');
-// const checkBox = document.getElementById("accept");
-// const submitButton = document.getElementById("submitButton");
+const checkBox = document.getElementById("accept");
+const submitBtn = document.getElementById("submitButton");
 
 const form = document.querySelector('#newLead');
 
@@ -112,18 +112,8 @@ const showSuccess = (input) => {
     error.textContent = '';
 }
 
-// const isBoxChecked = () => { 
-//     checkedEl.addEventListener("click", function () {
-//         if (checkedEl.checked) {
-//             submitButton.disabled == false;
-//         } else {
-//             submitButton.disabled == true;
-//         }
-//     });
-// };
-
-
 checkBox.addEventListener("click", function () {
+    let submitBtn = document.getElementById("submitButton");
     let isFirstNameValid = checkFirstName(),
         isLastNameValid = checkLastName(),
         isEmailValid = checkEmail(),
