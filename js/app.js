@@ -112,17 +112,7 @@ const showSuccess = (input) => {
     error.textContent = '';
 }
 
-// let submitBtn = document.getElementById("submitButton");
-// let isFirstNameValid = checkFirstName(),
-//     isLastNameValid = checkLastName(),
-//     isEmailValid = checkEmail(),
-//     isTelephoneValid = checkTelephone();
-// let
-//     isFormValid =
-//     isFirstNameValid &&
-//     isLastNameValid &&
-//     isEmailValid &&
-// isTelephoneValid;
+// final validation for the form
 const checkBox = document.getElementById("accept");
 const submitBtn = document.getElementById("submitButton");
 
@@ -135,7 +125,7 @@ checkBox.addEventListener("click", function() {
         checkTelephone() == valid) {
         isFormValid = true;
     }
-    if (checkBox.checked && isFormValid) {
+    if (checkBox.checked && isFormValid == true) {
         submitBtn.disabled = false;
     } else {
         submitBtn.disabled = true;
@@ -175,16 +165,26 @@ form.addEventListener('input', debounce(function(e) {
     }
 }));
 
-var objXMLHttpRequest = new XMLHttpRequest();
-objXMLHttpRequest.onreadystatechange = function() {
-    if (objXMLHttpRequest.readyState === 4) {
-        if (objXMLHttpRequest.status === 200) {
-            alert(objXMLHttpRequest.responseText);
-        } else {
-            alert('Error Code: ' + objXMLHttpRequest.status);
-            alert('Error Message: ' + objXMLHttpRequest.statusText);
-        }
-    }
-}
-objXMLHttpRequest.open('GET', 'request_ajax_data.php');
-objXMLHttpRequest.send();
+// var objXMLHttpRequest = new XMLHttpRequest();
+// objXMLHttpRequest.onreadystatechange = function() {
+//     if (objXMLHttpRequest.readyState === 4) {
+//         if (objXMLHttpRequest.status === 200) {
+//             alert(objXMLHttpRequest.responseText);
+//         } else {
+//             alert('Error Code: ' + objXMLHttpRequest.status);
+//             alert('Error Message: ' + objXMLHttpRequest.statusText);
+//         }
+//     }
+// }
+// objXMLHttpRequest.open('GET', 'request_ajax_data.php');
+// objXMLHttpRequest.send();
+
+(function(open) {
+    XMLHttpRequest.prototype.open = function(m, u, a, us, p) {
+        this.addEventListener('readystatechange', function() {
+            console.log(this.response);
+        }, false);
+
+        open.call(this, m, u, a, us, p);
+    };
+})(XMLHttpRequest.prototype.open)
