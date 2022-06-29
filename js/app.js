@@ -113,54 +113,57 @@ const showSuccess = (input) => {
 }
     
 //final validation for the form
-const checkBox = document.getElementById("accept");
 const submitBtn = document.getElementById("submitButton");
 let hiddenBox = document.getElementById("terms").style.visibility = "hidden";
 let evalResult = "";
 
-function eval () {
-   
-    let isFirstNameValid = checkFirstName(),
-    isLastNameValid = checkLastName(),
-    isEmailValid = checkEmail(),
-    isTelephoneValid = checkTelephone();
-
-    let isFormValid = 
-    isFirstNameValid &&
-    isLastNameValid &&
-    isEmailValid &&
-    isTelephoneValid;
-
-    if (isFormValid) {
-        evalResult = true;
-    }
-};
-
-console.log(evalResult);
-
-form.addEventListener("input", function(){
-    eval();
-    if (evalResult === true) {
-        showBox();
-    } else {
-        hideBox();
-    }
-});
+//show or hide the terms and conditions check box
 
 function showBox() {
     document.getElementById("terms").style.visibility = "visible";
-};
-function hideBox() {
-    document.getElementById("terms").style.visibility = "hidden";
+    console.log("a wild box appeared!");
 };
 
-checkBox.addEventListener("click", function(){
-    if (checkBox.checked == true) {
+function hideBox() {
+    document.getElementById("terms").style.visibility = "hidden";
+    console.log("the box fled!");
+};
+
+// validation runs on every input and only shows the checkbox
+// when the form is completely vaslidated
+
+let valid = ""
+
+document.querySelector("form").addEventListener("input", function(){
+    let valid = false;
+    if (checkFirstName(),
+    checkLastName(),
+    checkEmail(),
+    checkTelephone() === true) {
+        valid = true;
+    } else {
+        valid = false;
+    };
+    console.log(valid);
+    if (valid === true) {
+        showBox();
+    } else {
+        hideBox();
+    };
+});
+
+const cb = document.querySelector("#accept");
+console.log("it is" +(cb.checked));
+
+cb.addEventListener('click', function(){
+    if (cb.checked === true) {
         submitBtn.disabled = false;
     } else {
         submitBtn.disabled = true;
     }
-}); 
+});
+
+// post the data
 
 form.addEventListener('submit', function(e) {
 
@@ -168,7 +171,7 @@ form.addEventListener('submit', function(e) {
 
     const formData = new FormData(this);
    
-    fetch('post.php', {
+    fetch('create-lead.php', {
 
         method: 'post',
         body: formData
@@ -198,6 +201,8 @@ function debounce(fn, delay = 500) {
         }, delay);
     };
 }
+
+
 //event delegation
 form.addEventListener('input', debounce(function(e) {
     switch (e.target.id) {
@@ -215,3 +220,4 @@ form.addEventListener('input', debounce(function(e) {
             break;
     }
 }));
+

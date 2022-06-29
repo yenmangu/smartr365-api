@@ -169,3 +169,73 @@ form.addEventListener('input', debounce(function (e) {
             break;
     }
 }));
+
+
+//final validation for the form
+// const checkBox = document.getElementById("accept");
+// const submitBtn = document.getElementById("submitButton");
+// let finalEval = "";
+
+checkBox.addEventListener("click", function() {
+    form.addEventListener ("submit", function (e) {
+
+        let isFirstNameValid = checkFirstName(),
+        isLastNameValid = checkLastName(),
+        isEmailValid = checkEmail(),
+        isTelephoneValid = checkTelephone();
+
+        let isFormValid =
+        isFirstNameValid &&
+        isLastNameValid &&
+        isEmailValid &&
+        isTelephoneValid;
+
+        if (!isFormValid) { 
+            e.preventDefault()
+        }
+        if (checkBox.checked == true) {
+        submitBtn.disabled = false;
+        } else {
+        submitBtn.disabled = true;
+        }
+    })
+    
+});
+
+form.addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    const formData = new FormData(this);
+   
+    fetch('post.php', {
+
+        method: 'post',
+        body: formData
+
+    }).then(function(response) {
+        return response.text();
+    }).then(function(text) {
+        console.log(text);
+    }).catch(function(error) {
+        console.log(error);
+    });
+
+});
+
+
+const checkBox = document.getElementById("accept");
+const submitBtn = document.getElementById("submitButton");
+let finalEval = "";
+
+function checkTerms() {
+    if(document.formname.checkboxname.checked)
+    {
+        document.formname.submitname.disabled=false;
+    }
+    else
+    {
+        document.formname.submitname.disabled=true;
+    }
+}
+
