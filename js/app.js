@@ -115,10 +115,8 @@ const showSuccess = (input) => {
 //final validation for the form
 const checkBox = document.getElementById("accept");
 const submitBtn = document.getElementById("submitButton");
-const evalResult = "";
-const hiddenBox = document.getElementById("check-container");
-
-hiddenBox.style.visibility = "hidden";
+let hiddenBox = document.getElementById("terms").style.visibility = "hidden";
+let evalResult = "";
 
 function eval () {
    
@@ -136,12 +134,25 @@ function eval () {
     if (isFormValid) {
         evalResult = true;
     }
-     return evalResult;   
 };
 
-if (evalResult === true) {
-    hiddenBox.style.visibility = "visible"
-}
+console.log(evalResult);
+
+form.addEventListener("input", function(){
+    eval();
+    if (evalResult === true) {
+        showBox();
+    } else {
+        hideBox();
+    }
+});
+
+function showBox() {
+    document.getElementById("terms").style.visibility = "visible";
+};
+function hideBox() {
+    document.getElementById("terms").style.visibility = "hidden";
+};
 
 checkBox.addEventListener("click", function(){
     if (checkBox.checked == true) {
