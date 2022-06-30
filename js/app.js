@@ -224,6 +224,7 @@ async function makePost() {
         return result;
     } catch (err) {
         console.log(err);
+        console.log(response);
     }
 };
 

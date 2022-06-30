@@ -11,7 +11,7 @@ $data = array(
     )
   ],
   "buyerType" => $_POST["buyerType"],
-  "OrganisationId" => ["d75acf39-07c4-4c63-995a-e7055c58c973"],
+  "organisation-Id" => ["d75acf39-07c4-4c63-995a-e7055c58c973"],
 );
 
 $data = json_encode($data);
@@ -21,7 +21,7 @@ $ch = curl_init();
 $headers = [
   "x-api-key: 2528e9b2-7250-48fc-9371-4c13cd5991a4",
   "accept: application/json",
-  "content-Type: text/json",
+  "content-Type: application/json",
 ];
 
 curl_setopt($ch, CURLOPT_URL, 'https://api.smartr365.com/api/v1/mortgage/lead/create');
