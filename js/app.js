@@ -195,7 +195,7 @@ function successMsg() {
 async function makePost() {
 
     try {
-        const formData = new FormData(this);
+        const formData = new FormData(form);
 
         const response = await fetch('create-lead.php', {
             method: 'post',
