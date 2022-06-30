@@ -181,16 +181,31 @@ async function makePost() {
     } catch (err) {
         console.log(err);
     }
-}
+};
 
+
+
+
+
+function successMsg() {
+    document.getElementById("successMsg").style.display = "flex";
+    console.log("POSTED");
+};
 
 async function makePost() {
 
     try {
-        const formData = new FormData(form);
-        const response = await fetch('create-lead.php', {
+        const formData = JSON.stringify(new FormData(form));
+
+        const response = await fetch('https://api.smartr365.com/api/v1/mortgage/lead/create', {
             method: 'post',
-            body: formData
+            body: formData,
+            headers: {
+                'x-api-key': '2528e9b2-7250-48fc-9371-4c13cd5991a4',
+                'accept': 'application/json',
+                'content-Type': 'application/json'
+            }
+
         });
         console.log('status code: ', response.status);
         if (!response.ok) {
@@ -202,7 +217,7 @@ async function makePost() {
     } catch (err) {
         console.log(err);
     }
-}
+};
 
 form.addEventListener('submit', function(e) {
 
