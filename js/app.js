@@ -103,15 +103,15 @@ const showError = (input, message) => {
 };
 
 const showSuccess = (input) => {
-        const formField = input.parentElement;
+    const formField = input.parentElement;
 
-        formField.classList.remove('error');
-        formField.classList.add('success');
+    formField.classList.remove('error');
+    formField.classList.add('success');
 
-        const error = formField.querySelector('small');
-        error.textContent = '';
+    const error = formField.querySelector('small');
+    error.textContent = '';
 }
-    
+
 //final validation for the form
 const submitBtn = document.getElementById("submitButton");
 let hiddenBox = document.getElementById("terms").style.visibility = "hidden";
@@ -134,12 +134,12 @@ function hideBox() {
 
 let valid = ""
 
-document.querySelector("form").addEventListener("input", function(){
+document.querySelector("form").addEventListener("input", function() {
     let valid = false;
     if (checkFirstName(),
-    checkLastName(),
-    checkEmail(),
-    checkTelephone() === true) {
+        checkLastName(),
+        checkEmail(),
+        checkTelephone() === true) {
         valid = true;
     } else {
         valid = false;
@@ -153,9 +153,9 @@ document.querySelector("form").addEventListener("input", function(){
 });
 
 const cb = document.querySelector("#accept");
-console.log("it is" +(cb.checked));
+console.log("it is" + (cb.checked));
 
-cb.addEventListener('click', function(){
+cb.addEventListener('click', function() {
     if (cb.checked === true) {
         submitBtn.disabled = false;
     } else {
@@ -170,7 +170,7 @@ form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const formData = new FormData(this);
-   
+
     fetch('create-lead.php', {
 
         method: 'post',
@@ -220,4 +220,3 @@ form.addEventListener('input', debounce(function(e) {
             break;
     }
 }));
-
