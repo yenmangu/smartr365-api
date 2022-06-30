@@ -144,10 +144,15 @@ a {
     color: #fff;
 }
 
-.success-message {
+.wrapper {
+    display: flex;
+}
+
+.successMsg {
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
-
+    visibility: hidden;
+    
 }
