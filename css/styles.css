@@ -143,3 +143,11 @@ a {
     text-decoration: none;
     color: #fff;
 }
+
+.success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+
+}
