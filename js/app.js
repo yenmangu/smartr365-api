@@ -165,24 +165,49 @@ cb.addEventListener('click', function() {
 
 // post the data
 
+async function makePost() {
+    try {
+        const response = await fetch('create-lead.php');
+
+        console.log('status code: ', response.status);
+
+        if (!response.ok) {
+            console.log(response);
+            throw new Error(`Error! status: ${response.status}`);
+
+        }
+        const result = await response.json();
+        return result;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+async function makePost() {
+
+    try {
+        const formData = new FormData(form);
+        const response = await fetch('create-lead.php', {
+            method: 'post',
+            body: formData
+        });
+        console.log('status code: ', response.status);
+        if (!response.ok) {
+            console.log(response);
+            throw new Error(`Error! status; ${response.status}`);
+        }
+        const result = await response.json();
+        return result;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 form.addEventListener('submit', function(e) {
 
     e.preventDefault();
-
-    const formData = new FormData(this);
-
-    fetch('create-lead.php', {
-
-        method: 'post',
-        body: formData
-
-    }).then(function(response) {
-        return response.text();
-    }).then(function(text) {
-        console.log(text);
-    }).catch(function(error) {
-        console.log(error);
-    });
+    makePost();
 
 });
 
