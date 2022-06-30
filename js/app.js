@@ -186,24 +186,6 @@ cb.addEventListener('click', function () {
 // };
 
 
-
-(function () {
-    var cors_api_host = 'cors-anywhere.herokuapp.com';
-    var cors_api_url = 'https://' + cors_api_host + '/';
-    var slice = [].slice;
-    var origin = window.location.protocol + '//' + window.location.host;
-    var open = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function () {
-        var args = slice.call(arguments);
-        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
-            targetOrigin[1] !== cors_api_host) {
-            args[1] = cors_api_url + args[1];
-        }
-        return open.apply(this, args);
-    };
-})();
-
 function successMsg() {
     document.getElementById("successMsg").style.display = "flex";
     console.log("POSTED");
@@ -214,21 +196,23 @@ async function makePost() {
     try {
 
         const formData = new FormData(form);
+        console.log(formData);
+
         const formObj = JSON.stringify(Object.fromEntries(formData));
         console.log(formObj);
 
-        const myHeaders = new Headers();
-        //myHeaders.append('content-Type', 'multipart/form-data');
-        myHeaders.append('accept', 'application/json');
-        myHeaders.append('Authorization', 'x-api-key 2528e9b2-7250-48fc-9371-4c13cd5991a4');
+        // const myHeaders = new Headers();
+        // //myHeaders.append('content-Type', 'multipart/form-data');
+        // myHeaders.append('accept', 'application/json');
+        // myHeaders.append('Authorization', 'x-api-key 2528e9b2-7250-48fc-9371-4c13cd5991a4');
 
         // url for the post-data
 
-        const response = await fetch('https://api.smartr365.com/api/v1/mortgage/lead/create', {
+        const response = await fetch('create-lead.php', {
             method: 'post',
             body: formData,
-            Headers: myHeaders,
-            mode: "no-cors",
+            //Headers: myHeaders,
+            //mode: "no-cors",
         });
 
         console.log('status code: ', response.status);
