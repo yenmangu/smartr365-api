@@ -163,27 +163,8 @@ cb.addEventListener('click', function () {
     }
 });
 
-// post the data
-
-// async function makePost() {
-//     try {
-//         const response = await fetch('create-lead.php');
-//         const formData
-
-//         fetch
-//         console.log('status code: ', response.status);
-
-//         if (!response.ok) {
-//             console.log(response);
-//             throw new Error(`Error! status: ${response.status}`);
-
-//         }
-//         const result = await response.json();
-//         return result;
-//     } catch (err) {
-//         console.log(err);
-//     }
-// };
+// const formObj = JSON.stringify(Object.fromEntries(formData));
+// console.log(formObj);
 
 
 function successMsg() {
@@ -200,13 +181,6 @@ async function makePost() {
 
         const formObj = JSON.stringify(Object.fromEntries(formData));
         console.log(formObj);
-
-        // const myHeaders = new Headers();
-        // //myHeaders.append('content-Type', 'multipart/form-data');
-        // myHeaders.append('accept', 'application/json');
-        // myHeaders.append('Authorization', 'x-api-key 2528e9b2-7250-48fc-9371-4c13cd5991a4');
-
-        // url for the post-data
 
         const response = await fetch('create-lead.php', {
             method: 'post',
@@ -231,7 +205,7 @@ async function makePost() {
 form.addEventListener('submit', function (e) {
 
     e.preventDefault();
-    makePost();
+    makePost()
 
 });
 
