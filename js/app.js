@@ -164,12 +164,20 @@ cb.addEventListener('click', function() {
 });
 
 // post the data
+const wrapper = document.getElementById('wrapper');
+const formWrap = document.getElementById('formWrap');
+const successMsg = document.getElementById('successMsg');
+const applicantH1 = document.getElementById('applicantH1');
+successMsg.style.display = 'none';
+
+function successTime() {
+    successMsg.style.display = 'flex';
+    applicantH1.style.display = 'none';
+    successMsg.style.flexDirection = 'column';
+    formWrap.style.display = 'none';
+}
 
 
-function successMsg() {
-    document.getElementById("successMsg").style.display = "flex";
-    console.log("POSTED");
-};
 
 async function makePost() {
     const formData = new FormData(form);
@@ -183,6 +191,8 @@ async function makePost() {
         if (!response.ok) {
             console.log(response);
             throw new Error(`Error! status; ${response.status}`);
+        } else {
+            successTime();
         }
         const result = await response.json();
         return result;
