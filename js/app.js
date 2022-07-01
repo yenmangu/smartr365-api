@@ -165,27 +165,6 @@ cb.addEventListener('click', function() {
 
 // post the data
 
-async function makePost() {
-    try {
-        const response = await fetch('create-lead.php');
-
-        console.log('status code: ', response.status);
-
-        if (!response.ok) {
-            console.log(response);
-            throw new Error(`Error! status: ${response.status}`);
-
-        }
-        const result = await response.json();
-        return result;
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-
-
-
 
 function successMsg() {
     document.getElementById("successMsg").style.display = "flex";
@@ -198,8 +177,6 @@ async function makePost() {
         const response = await fetch('create-lead.php', {
             method: 'post',
             body: formData,
-
-
 
         });
         console.log('status code: ', response.status);
